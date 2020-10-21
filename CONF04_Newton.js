@@ -1,13 +1,15 @@
+//node CONF04_Newton.js po iterations tol
 let init = new Date();
 let po = Number(process.argv[2]);
-const tol = Number(process.argv[3]) || 0.0001;
+const iterations = Number(process.argv[3]);
+const tol = Number(process.argv[4]) || 0.00001;
 
 /**
  * Function to solve the determined ecuation (change this in every exercise)
  * @param {Number} x value of x
  */
 function solve(x) {
-  return Math.pow(x, 3) - (2 * Math.pow(x, 2) - 5);
+  return Math.cos(x) - x;
 }
 
 /**
@@ -15,7 +17,7 @@ function solve(x) {
  * @param {Number} x value of the derivative
  */
 function solveDerivative(x) {
-  return 3 * Math.pow(x, 2) - (4 * x);
+  return -Math.sin(x) - 1;
 }
 
 /**
@@ -26,20 +28,26 @@ function solveP(x) {
   return x - solve(x) / solveDerivative(x);
 }
 
-let i = 0;
-let poh = [];
-console.log(po);
-while (i < 10) {
+let poHistory = [];
+for (let index = 0; index < iterations; index++) {
   po = solveP(po);
-  poh.push(po);
-  if (Math.abs(po - poh[poh.length - 2]) < tol) {
+  poHistory.push(po);
+
+  if (Math.abs(po - poHistory[poHistory.length - 2]) < tol) {
+    console.log("");
+    console.log("");
+    console.log("Solution!");
     console.log("The result is: " + po);
     break;
   } else {
+    console.log("Iteration: " + (index + 1));
+    console.log(
+      "Error: " + Math.abs(po - poHistory[poHistory.length - 2]) / po
+    );
     console.log(po);
+    console.log("------------------------------------------------");
   }
-  i++;
 }
-let end = new Date();
 
+let end = new Date();
 console.log("Time: " + (end - init));
