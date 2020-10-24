@@ -10,7 +10,7 @@ const pKnow = Number(process.argv[6]) || null;
  * @param {Number} x value of x
  */
 function solve(x) {
-  return Number(Math.pow(x, 3) + 4 * Math.pow(x, 2) - 10);
+  return Number(Math.pow(x, 3) - 7 * Math.pow(x, 2) + 14 * x - 6);
 }
 
 /**
@@ -20,14 +20,6 @@ function solve(x) {
  */
 function solveP(a, b) {
   return Number(a + (b - a) / 2);
-}
-
-/**
- * Function to find the error when the value of p is know
- * @param {Number} pn1 value of last p
- */
-function findError(pn1) {
-  return Number(Math.abs(pKnow - pn1) / Math.abs(pKnow));
 }
 
 /**
@@ -90,7 +82,7 @@ for (let index = 0; index < iterations; index++) {
     console.log((b - a) / 2);
     showData(index, a, b, p, fp, fa, fb, pE);
     console.log(
-      "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+      "------------------------------------------------------------------------------------------------------------------------------------------------------"
     );
     //check where the value is negative
     if (fp * fa < 0) {
