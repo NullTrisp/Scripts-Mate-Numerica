@@ -1,12 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class CONF04_Newton {
-    /**
-     * Newton constructor
-     * @param po first aproximation
-     * @param it number of iterations
-     * @param tol tolerance for answer
-     */
+class CONF05_Newton_Modificado {
     constructor(po, it, tol) {
         this.po = po;
         this.iterations = it;
@@ -14,25 +8,32 @@ class CONF04_Newton {
         this.poHistory = [];
     }
     /**
-     *Function to solve the determined ecuation (change this in every exercise)
-     *@param x value of x
+     * Function to solve the determined ecuation (change this in every exercise)
+     * @param x value of x
      */
     solve(x) {
-        return (Math.cos(x) - x);
+        return Math.cos(x) - x;
     }
     /**
      * Function to solve the determined ecuation (change this in every exercise)
      * @param x value of the derivative
      */
     solveDerivative(x) {
-        return (-Math.sin(x) - 1);
+        return -Math.sin(x) - 1;
+    }
+    /**
+     * Function to solve the determined ecuation (change this in every exercise)
+     * @param x value of the derivative
+     */
+    solveSecondDerivative(x) {
+        return -Math.cos(x);
     }
     /**
      * Function to solve the determined ecuation
      * @param x value of P
      */
     solveP(x) {
-        return x - this.solve(x) / this.solveDerivative(x);
+        return (this.solve(x) * this.solveDerivative(x)) / (Math.pow(this.solveDerivative(x), 2) - this.solve(x) * this.solveSecondDerivative(x));
     }
     /**
      * Method to execute the exercise
@@ -46,7 +47,6 @@ class CONF04_Newton {
                 console.log("");
                 console.log("");
                 console.log("Solution!");
-                console.log("Iteration: " + (index + 1));
                 console.log("The result is: " + this.po);
                 break;
             }
@@ -59,6 +59,5 @@ class CONF04_Newton {
         }
     }
 }
-//node CONF04_Newton.js
-const exercise = new CONF04_Newton(0.7853981634, 30, 0.0001);
+const exercise = new CONF05_Newton_Modificado(1, 30, 0.0001);
 exercise.execute();

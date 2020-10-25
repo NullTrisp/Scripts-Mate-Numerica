@@ -20,29 +20,32 @@ class CONF04_Newton {
 
   /**
    *Function to solve the determined ecuation (change this in every exercise)
-   *@param {number} x value of x
+   *@param x value of x
    */
-  solve(x: number) {
+  private solve(x: number): number {
     return (Math.cos(x) - x);
   }
 
   /**
    * Function to solve the determined ecuation (change this in every exercise)
-   * @param {number} x value of the derivative
+   * @param x value of the derivative
    */
-  solveDerivative(x: number) {
+  private solveDerivative(x: number): number {
     return (-Math.sin(x) - 1);
   }
 
   /**
    * Function to solve the determined ecuation
-   * @param {number} x value of P
+   * @param x value of P
    */
-  solveP(x: number) {
+  private solveP(x: number): number {
     return x - this.solve(x) / this.solveDerivative(x);
   }
 
-  execute() {
+  /**
+   * Method to execute the exercise
+   */
+  public execute(): void {
     let index: number;
 
     for (index = 0; index < this.iterations; index++) {
