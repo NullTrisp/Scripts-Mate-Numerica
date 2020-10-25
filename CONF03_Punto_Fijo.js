@@ -1,3 +1,5 @@
+const tInit = new Date();
+
 //node CONF03_Punto_Fijo.js a b iterations aprox
 let a = Number(process.argv[2]);
 let b = Number(process.argv[3]);
@@ -10,7 +12,7 @@ let po = (a + b) / 2;
  * @param {Number} x value of x
  */
 function solve(x) {
-  return Math.pow(10 / (4 + x), 0.5);
+  return Number((Math.pow(x, 3) + 1) / 2);
 }
 
 let po1 = [];
@@ -44,3 +46,5 @@ for (let index = 0; index < iterations; index++) {
     );
   }
 }
+
+console.log("Time: " + (new Date() - tInit));
