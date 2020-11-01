@@ -81,4 +81,5 @@ class CONF03_Bisección {
     }
 }
 const exercise = new CONF03_Bisección(1, 2, 0.0001, 40);
-exercise.execute();
+exercise.execute(); //funciona y testeado
+//TODO preguntar por error absoluto o algoritmico

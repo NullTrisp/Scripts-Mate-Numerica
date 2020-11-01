@@ -56,7 +56,7 @@ class CONF03_Bisección {
     /**
      * execute
      */
-    public execute() {
+    public execute(): void {
         let index: number, fa: number, fb: number, p: number, fp: number;
         for (index = 0; index < this.iterations; index++) {
             fa = this.solve(this.a);
@@ -94,4 +94,5 @@ class CONF03_Bisección {
 }
 
 const exercise: CONF03_Bisección = new CONF03_Bisección(1, 2, 0.0001, 40);
-exercise.execute();
+exercise.execute(); //funciona y testeado
+//TODO preguntar por error absoluto o algoritmico
